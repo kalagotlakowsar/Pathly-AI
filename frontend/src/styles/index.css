@@ -1,0 +1,282 @@
+:root {
+  /* Pastel Light Theme Palette */
+  --bg-primary: #FAF9FD;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F3F1FA;
+  --bg-elevated: #FFFFFF;
+  
+  --text-main: #1E1B4B;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+
+  /* Pastel Accents */
+  --pastel-lavender: #E8E5F8;
+  --pastel-lavender-dark: #7C3AED;
+  --pastel-lavender-text: #5B21B6;
+
+  --pastel-pink: #FCE7F0;
+  --pastel-pink-dark: #EC4899;
+  --pastel-pink-text: #9D174D;
+
+  --pastel-blue: #E0F2FE;
+  --pastel-blue-dark: #0284C7;
+  --pastel-blue-text: #075985;
+
+  --pastel-green: #DCFCE7;
+  --pastel-green-dark: #10B981;
+  --pastel-green-text: #166534;
+
+  --pastel-amber: #FEF3C7;
+  --pastel-amber-dark: #F59E0B;
+  --pastel-amber-text: #92400E;
+
+  --pastel-peach: #FFEDD5;
+  --pastel-peach-dark: #EA580C;
+  --pastel-peach-text: #9A3412;
+
+  --border-color: #EAE6F4;
+  --border-hover: #D6D0EA;
+  --shadow-sm: 0 2px 8px -1px rgba(124, 58, 237, 0.04);
+  --shadow-md: 0 8px 24px -4px rgba(124, 58, 237, 0.08);
+  --shadow-lg: 0 16px 36px -6px rgba(124, 58, 237, 0.12);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0F0E17;
+  --bg-surface: #191726;
+  --bg-subtle: #232035;
+  --bg-elevated: #28243E;
+
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-light: #64748B;
+
+  --pastel-lavender: #2E254A;
+  --pastel-lavender-dark: #A78BFA;
+  --pastel-lavender-text: #DDD6FE;
+
+  --pastel-pink: #3D1C2E;
+  --pastel-pink-dark: #F472B6;
+  --pastel-pink-text: #FBCFE8;
+
+  --pastel-blue: #162E44;
+  --pastel-blue-dark: #38BDF8;
+  --pastel-blue-text: #BAE6FD;
+
+  --pastel-green: #143525;
+  --pastel-green-dark: #34D399;
+  --pastel-green-text: #A7F3D0;
+
+  --pastel-amber: #382B14;
+  --pastel-amber-dark: #FBBF24;
+  --pastel-amber-text: #FDE68A;
+
+  --border-color: #2F2A47;
+  --border-hover: #433C63;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  color: var(--text-main);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--pastel-lavender-dark);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+/* Button Classes */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--pastel-lavender-dark);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: #6D28D9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--pastel-lavender);
+  color: var(--pastel-lavender-text);
+  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: var(--radius-md);
+  transition: all 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #DDD6FE;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  transition: all 0.15s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--pastel-lavender-dark);
+  color: var(--pastel-lavender-dark);
+  background-color: var(--pastel-lavender);
+}
+
+/* Card Classes */
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-hover);
+}
+
+/* Badge Classes */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.badge-lavender {
+  background-color: var(--pastel-lavender);
+  color: var(--pastel-lavender-text);
+}
+
+.badge-pink {
+  background-color: var(--pastel-pink);
+  color: var(--pastel-pink-text);
+}
+
+.badge-blue {
+  background-color: var(--pastel-blue);
+  color: var(--pastel-blue-text);
+}
+
+.badge-green {
+  background-color: var(--pastel-green);
+  color: var(--pastel-green-text);
+}
+
+.badge-amber {
+  background-color: var(--pastel-amber);
+  color: var(--pastel-amber-text);
+}
+
+/* Public Standalone Layout (No sidebar or navbar) */
+.public-layout {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* App Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background-color: var(--bg-primary);
+}
+
+.page-body {
+  flex: 1;
+  padding: 32px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .page-body {
+    padding: 16px;
+  }
+}

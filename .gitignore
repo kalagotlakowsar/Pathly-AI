@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+.pytest_cache/
+backend/.pytest_cache/
+*.db
+*.sqlite3
+pathly.db
+backend/pathly.db
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+dist/
+.DS_Store
+
+# Environment & Secrets
+.env
+.env.*
+*.env
+*.env.local
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
