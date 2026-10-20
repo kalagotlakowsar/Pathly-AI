@@ -147,6 +147,26 @@ export const authService = {
     };
     _inFlightVerifyPromise = null;
     api.invalidateCache();
+
+    // Prevent Google Identity Services and browser Credential Manager from automatically prompting/auto-selecting
+    if (typeof window !== 'undefined') {
+      if (window.google?.accounts?.id?.disableAutoSelect) {
+        try {
+          window.google.accounts.id.disableAutoSelect();
+        } catch (e) {}
+      }
+      if (window.google?.accounts?.id?.cancel) {
+        try {
+          window.google.accounts.id.cancel();
+        } catch (e) {}
+      }
+      if (window.navigator?.credentials?.preventSilentAccess) {
+        try {
+          window.navigator.credentials.preventSilentAccess();
+        } catch (e) {}
+      }
+    }
+
     window.dispatchEvent(new Event('authChange'));
   },
 

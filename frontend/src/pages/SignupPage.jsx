@@ -35,6 +35,13 @@ export default function SignupPage() {
 
   // Initialize and render Google Identity Services (GIS) button when configured
   useEffect(() => {
+    // Proactively cancel any active One Tap / FedCM prompts on page mount
+    if (window.google?.accounts?.id) {
+      try {
+        window.google.accounts.id.cancel();
+      } catch (e) {}
+    }
+
     if (!googleConfig?.configured || !googleConfig?.client_id) return;
 
     let isMounted = true;
@@ -47,7 +54,12 @@ export default function SignupPage() {
           window.google.accounts.id.initialize({
             client_id: googleConfig.client_id,
             callback: handleGoogleCredentialResponse,
+            auto_select: false,
+            cancel_on_tap_outside: true,
+            itp_support: true,
           });
+          // Ensure One Tap prompt is not displayed
+          window.google.accounts.id.cancel();
           googleBtnContainerRef.current.innerHTML = '';
           window.google.accounts.id.renderButton(googleBtnContainerRef.current, {
             theme: 'outline',
@@ -70,6 +82,11 @@ export default function SignupPage() {
     return () => {
       isMounted = false;
       if (timerId) clearTimeout(timerId);
+      if (window.google?.accounts?.id) {
+        try {
+          window.google.accounts.id.cancel();
+        } catch (e) {}
+      }
     };
   }, [googleConfig]);
 
@@ -146,16 +163,6 @@ export default function SignupPage() {
     setGoogleSetupNotice('');
 
     if (googleConfig && googleConfig.configured && googleConfig.client_id) {
-      if (window.google?.accounts?.id) {
-        window.google.accounts.id.prompt((notification) => {
-          if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-            if (googleConfig.url) {
-              window.location.href = googleConfig.url;
-            }
-          }
-        });
-        return;
-      }
       if (googleConfig.url) {
         window.location.href = googleConfig.url;
         return;
@@ -370,6 +377,7 @@ export default function SignupPage() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Alex Morgan"
                 required
+                autoComplete="name"
                 style={{ paddingLeft: '38px', width: '100%' }}
               />
               <User
@@ -396,6 +404,7 @@ export default function SignupPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="alex@example.com"
                 required
+                autoComplete="username"
                 style={{ paddingLeft: '38px', width: '100%' }}
               />
               <Mail
@@ -422,6 +431,7 @@ export default function SignupPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="At least 6 characters"
                 required
+                autoComplete="new-password"
                 style={{ paddingLeft: '38px', width: '100%' }}
               />
               <Lock
