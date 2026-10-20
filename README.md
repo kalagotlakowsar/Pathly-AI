@@ -7,6 +7,12 @@ It includes a native **Model Context Protocol (MCP)** server built with the offi
 
 ---
 
+## 🌐 Live Demo
+
+🚀 **Try Pathly:** https://pathly-ai-navy.vercel.app/
+
+💻 **Source Code:** https://github.com/kalagotlakowsar/Pathly-AI
+
 ## 🌟 Highlights & Key Features
 
 ### 1. Personalized Roadmap Generator
